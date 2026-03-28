@@ -1,0 +1,262 @@
+/* Dark Mode Support */
+html {
+    color-scheme: light dark;
+}
+
+/* Smooth scrolling for navigation */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Remove default scrollbar styling for webkit browsers and add custom one */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #3b82f6, #1e40af);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #60a5fa, #3b82f6);
+}
+
+/* Light mode scrollbar */
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #93c5fd, #60a5fa);
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #3b82f6, #1e40af);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Custom focus states for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Dark mode focus states */
+.dark a:focus,
+.dark button:focus,
+.dark input:focus,
+.dark textarea:focus {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
+
+/* Hover effect for cards */
+.group:hover {
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1),
+                0 10px 10px -5px rgba(59, 130, 246, 0.04);
+}
+
+.dark .group:hover {
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2),
+                0 10px 10px -5px rgba(59, 130, 246, 0.1);
+}
+
+/* Input fields styling */
+input,
+textarea {
+    background-color: inherit;
+    color: inherit;
+}
+
+input:focus,
+textarea:focus {
+    background-color: transparent;
+}
+
+/* Button styles */
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Form validation styles */
+input:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color: #10b981;
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark .gradient-text {
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Link hover effects */
+a {
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s ease;
+}
+
+/* Only apply underline effect to specific links */
+p a::after,
+.prose a::after {
+    width: 100%;
+}
+
+p a:hover::after {
+    width: 100%;
+}
+
+/* Better text selection color */
+::selection {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.dark ::selection {
+    background-color: #60a5fa;
+    color: #0f172a;
+}
+
+/* Smooth page transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Prevent layout shift */
+html {
+    overflow-y: scroll;
+}
+
+/* Better font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Container queries for responsive design */
+@supports (container-type: inline-size) {
+    .container-responsive {
+        container-type: inline-size;
+    }
+}
+
+/* Animation delays */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+    .backdrop-blur-md {
+        backdrop-filter: blur(12px);
+    }
+}
