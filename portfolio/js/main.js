@@ -1,3 +1,57 @@
+// Typing Animation for Skills
+const createTypingAnimation = () => {
+    const typingElement = document.getElementById('typingAnimation');
+    const skills = [
+        'HTML5 & CSS3',
+        'JavaScript (ES6+)',
+        'Responsive Design',
+        'Tailwind CSS',
+        'React.js',
+        'Problem Solving'
+    ];
+
+    if (!typingElement) return;
+
+    let skillIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const delayBetweenSkills = 2000;
+
+    const type = () => {
+        const currentSkill = skills[skillIndex];
+        
+        if (isDeleting) {
+            charIndex--;
+        } else {
+            charIndex++;
+        }
+
+        typingElement.textContent = currentSkill.substring(0, charIndex);
+
+        let timeout = isDeleting ? deletingSpeed : typingSpeed;
+
+        if (!isDeleting && charIndex === currentSkill.length) {
+            // Finished typing, wait before deleting
+            timeout = delayBetweenSkills;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Finished deleting, move to next skill
+            isDeleting = false;
+            skillIndex = (skillIndex + 1) % skills.length;
+            timeout = 500;
+        }
+
+        setTimeout(type, timeout);
+    };
+
+    // Start the animation
+    setTimeout(type, 500);
+};
+
+window.addEventListener('DOMContentLoaded', createTypingAnimation);
+
 // Initialize all functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle

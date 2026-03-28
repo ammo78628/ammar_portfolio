@@ -260,3 +260,41 @@ body {
         backdrop-filter: blur(12px);
     }
 }
+
+/* Profile Photo Styles */
+#profilePhoto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#profilePhoto:not([src]),
+#profilePhoto[src=""],
+#profilePhoto[src*="undefined"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Typing Animation Styles */
+#typingAnimation {
+    display: inline-block;
+    min-width: 200px;
+    word-spacing: 0.1em;
+}
+
+#cursor {
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
