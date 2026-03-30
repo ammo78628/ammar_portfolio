@@ -15,10 +15,9 @@
 <body class="transition-colors duration-300 bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100">
     <!-- Loading Theme -->
     <script>
-        const theme = localStorage.getItem('theme') || 'light';
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
+        // Force dark mode for professional aesthetic
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     </script>
 
     <!-- Navigation Bar -->
@@ -80,94 +79,147 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-slate-950 dark:via-slate-900 dark:to-blue-900/20 transition-colors duration-300 relative">
-        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <!-- Left: Photo -->
-            <div class="animate-fade-in order-2 md:order-1 flex justify-center">
-                <div class="w-72 h-96 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 p-1 shadow-2xl dark:shadow-blue-500/40 overflow-hidden">
-                    <img id="profilePhoto" src="assets/images/ammo.png" alt="Ammar Agvan - Profile Photo" class="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-300">
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-600/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-1/2 left-1/3 w-72 h-72 bg-cyan-500/10 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+        
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+            <!-- Left: Text Content -->
+            <div class="animate-fade-in order-1 text-center md:text-left">
+                <!-- Available for Work Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-400/50 bg-green-400/10 backdrop-blur-sm mb-8 md:justify-start justify-center w-full md:w-auto">
+                    <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                    <span class="text-green-300 text-sm font-semibold">Available for Work</span>
+                </div>
+
+                <!-- Name -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 leading-tight">
+                    <span class="text-white">Ammar Agvan</span>
+                </h1>
+
+                <!-- Title with Typewriter Effect -->
+                <p class="text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 font-semibold mb-6">
+                    <span id="typingAnimation"></span>
+                </p>
+
+                <!-- Description -->
+                <p class="text-gray-300 text-lg mb-10 leading-relaxed max-w-lg">
+                    Crafting beautiful, interactive digital experiences with modern web technologies. Specialized in responsive design and intuitive user interfaces.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
+                    <a href="projects.html" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg font-semibold text-white shadow-lg shadow-purple-500/40 hover:shadow-purple-500/60 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        View My Work
+                    </a>
+                    <a href="contact.html" class="px-8 py-4 border-2 border-blue-400/50 text-blue-300 rounded-lg font-semibold hover:bg-blue-400/10 backdrop-blur-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Get In Touch
+                    </a>
                 </div>
             </div>
 
-            <!-- Right: Text Content -->
-            <div class="animate-fade-in order-1 md:order-2 text-center md:text-left">
-                <h1 class="text-6xl sm:text-7xl md:text-6xl font-bold mb-8 leading-tight">
-                    <span class="text-gray-900 dark:text-white">Frontend Developer</span>
-                    <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 dark:from-blue-400 dark:via-blue-500 dark:to-blue-600">
-                        with a Passion for Clean Code
-                    </span>
-                </h1>
+            <!-- Right: Profile Photo with Glowing Frame & Orbiting Icons -->
+            <div class="animate-fade-in order-2 flex justify-center items-center">
+                <div class="relative w-96 h-96 flex items-center justify-center">
+                    <!-- Center Profile Photo without Background -->
+                    <div class="relative z-20">
+                        <div class="float-animation">
+                            <div class="w-96 h-96 rounded-full overflow-hidden" style="box-shadow: 0 0 60px rgba(168, 85, 247, 0.4), 0 0 40px rgba(59, 130, 246, 0.3); animation: bubbleWave 8s ease-in-out infinite, bubbleGlow 6s ease-in-out infinite;">
+                                <img id="profilePhoto" src="assets/images/ammo.png" alt="Ammar Agvan - Profile Photo" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
 
-                <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
-                    Frontend Developer with 1 year of experience building responsive web interfaces. I create beautiful, intuitive digital experiences that users genuinely enjoy.
-                </p>
+                    <!-- Orbiting 3D Glass-Style Icons -->
+                    <!-- HTML5 Icon -->
+                    <div class="tech-orbit absolute w-full h-full origin-center z-30">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-md border border-cyan-400/50 bg-gradient-to-br from-cyan-400/30 to-purple-400/30 hover:scale-125 hover:shadow-cyan-400/50 hover:shadow-lg" style="box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);">
+                            <img src="assets/images/html5.png" alt="HTML5 Logo" class="w-12 h-12 object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- CSS3 Icon -->
+                    <div class="tech-orbit absolute w-full h-full origin-center z-30" style="animation-delay: -6.67s;">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-md border border-pink-400/50 bg-gradient-to-br from-pink-400/30 to-purple-400/30 hover:scale-125 hover:shadow-pink-400/50 hover:shadow-lg" style="box-shadow: 0 0 20px rgba(244, 114, 182, 0.4);">
+                            <img src="assets/images/css3.png" alt="CSS3 Logo" class="w-12 h-12 object-contain">
+                        </div>
+                    </div>
+                    
+                    <!-- JavaScript Icon -->
+                    <div class="tech-orbit absolute w-full h-full origin-center z-30" style="animation-delay: -13.33s;">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-md border border-purple-400/50 bg-gradient-to-br from-purple-400/30 to-pink-400/30 hover:scale-125 hover:shadow-purple-400/50 hover:shadow-lg" style="box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);">
+                            <img src="assets/images/js.png" alt="JavaScript Logo" class="w-10 h-10 object-contain">
+                        </div>
+                    </div>
 
-                <!-- Typing Animation for Skills -->
-                <div class="mb-12 h-14 flex items-center md:justify-start justify-center">
-                    <span class="text-xl font-semibold text-gray-700 dark:text-gray-200">I specialize in: </span>
-                    <span id="typingAnimation" class="ml-3 text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 min-h-8"></span>
-                    <span id="cursor" class="ml-0.5 w-0.5 h-6 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 animate-pulse"></span>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
-                    <a href="projects.html" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 rounded-lg font-semibold text-white hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105">
-                        View My Work
-                    </a>
-                    <a href="contact.html" class="px-8 py-4 border-2 border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-300 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-slate-800 transition-all duration-300">
-                        Get In Touch
-                    </a>
                 </div>
             </div>
         </div>
 
         <!-- Scroll indicator -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1 text-center">Scroll to explore</p>
-            <svg class="w-6 h-6 mx-auto text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <p class="text-xs text-gray-400 mb-2 text-center">Scroll to explore</p>
+            <svg class="w-5 h-5 mx-auto text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
     </section>
 
     <!-- Skills Showcase Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-900/50 border-t border-gray-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl sm:text-5xl font-bold mb-16 text-center text-gray-900 dark:text-white">
-                Tech <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500">Stack</span>
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-800 to-slate-900 border-t border-purple-500/20 transition-colors duration-300 relative overflow-hidden\">
+        <!-- Background decoration -->\n        <div class=\"absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full mix-blend-screen filter blur-3xl opacity-30\"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+                🛠️ Tech <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500">Stack</span>
             </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+                Modern technologies and tools I use to build exceptional web experiences
+            </p>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                 <!-- HTML5 -->
-                <div class="group">
-                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-lg p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-lg dark:hover:shadow-blue-500/20">
-                        <div class="text-5xl mb-4">📋</div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">HTML5</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Semantic markup</p>
+                <div class="group h-full">
+                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-xl p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/80 transition-all duration-300 transform hover:scale-110 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-xl dark:hover:shadow-blue-500/40 group-hover:-translate-y-2 h-full flex flex-col items-center justify-center">
+                        <img src="assets/images/html5.png" alt="HTML5 Logo" class="w-20 h-20 group-hover:scale-125 transition-transform duration-300 object-contain rounded-lg filter drop-shadow-none" style="filter: contrast(1.1) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">HTML5</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Semantic & Accessible</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">Proper markup structure</p>
                     </div>
                 </div>
                 <!-- CSS3 -->
-                <div class="group">
-                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-lg p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-lg dark:hover:shadow-blue-500/20">
-                        <div class="text-5xl mb-4">🎨</div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">CSS3</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Responsive design</p>
+                <div class="group h-full">
+                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-xl p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/80 transition-all duration-300 transform hover:scale-110 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-xl dark:hover:shadow-blue-500/40 group-hover:-translate-y-2 h-full flex flex-col items-center justify-center">
+                        <img src="assets/images/css3.png" alt="CSS3 Logo" class="w-16 h-16 mb-4 group-hover:scale-125 transition-transform duration-300 object-contain rounded-lg filter drop-shadow-none" style="filter: contrast(1.1) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">CSS3</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Modern Styling</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">Animations & transitions</p>
                     </div>
                 </div>
                 <!-- JavaScript -->
-                <div class="group">
-                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-lg p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-lg dark:hover:shadow-blue-500/20">
-                        <div class="text-5xl mb-4">⚡</div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">JavaScript</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Interactive features</p>
+                <div class="group h-full">
+                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-xl p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/80 transition-all duration-300 transform hover:scale-110 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-xl dark:hover:shadow-blue-500/40 group-hover:-translate-y-2 h-full flex flex-col items-center justify-center">
+                        <img src="assets/images/js.png" alt="JavaScript Logo" class="w-16 h-16 mb-4 group-hover:scale-125 transition-transform duration-300 object-contain rounded-lg filter drop-shadow-none" style="filter: contrast(1.1) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">JavaScript</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">ES6+ Features</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">Interactive functionality</p>
                     </div>
                 </div>
                 <!-- Tailwind CSS -->
-                <div class="group">
-                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-lg p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-lg dark:hover:shadow-blue-500/20">
-                        <div class="text-5xl mb-4">💨</div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Tailwind CSS</h3>
+                <div class="group h-full">
+                    <div class="bg-white dark:bg-slate-800/50 border border-gray-200 dark:border-blue-500/30 rounded-xl p-8 text-center hover:border-blue-400/60 dark:hover:border-blue-400/80 transition-all duration-300 transform hover:scale-110 hover:bg-blue-50 dark:hover:bg-slate-800 shadow-sm hover:shadow-xl dark:hover:shadow-blue-500/40 group-hover:-translate-y-2 h-full flex flex-col items-center justify-center">
+                        <img src="assets/images/tailwind.png" alt="Tailwind CSS Logo" class="w-16 h-16 mb-4 group-hover:scale-125 transition-transform duration-300 object-contain rounded-lg filter drop-shadow-none" style="filter: contrast(1.1) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Tailwind CSS</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Utility-first CSS</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-2">Rapid styling</p>
                     </div>
                 </div>
             </div>
@@ -175,24 +227,86 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-900 dark:to-blue-800 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto text-center">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 dark:from-blue-900 dark:via-blue-800 dark:to-blue-900 transition-colors duration-300 relative overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
             <h2 class="text-4xl sm:text-5xl font-bold mb-6 text-white">
-                Let's Build Something Amazing
+                ✨ Let's Build Something Amazing
             </h2>
-            <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-                I'm always open to new projects and opportunities. Let's collaborate and create something great!
+            <p class="text-lg text-blue-100 mb-4 max-w-2xl mx-auto leading-relaxed">
+                I'm passionate about creating digital experiences that make a difference. Whether you have a project in mind, want to collaborate, or just want to chat about web development, I'd love to hear from you!
             </p>
-            <a href="contact.html" class="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+                Let's turn your ideas into reality with clean code and creative solutions.
+            </p>
+            <a href="contact.html" class="inline-block px-10 py-4 bg-white text-blue-600 font-bold rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 flex items-center justify-center gap-2 mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
                 Start Your Project →
             </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-200 dark:border-slate-800 py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900 transition-colors duration-300">
-        <div class="max-w-4xl mx-auto text-center text-gray-600 dark:text-gray-400">
-            <p>© 2024 Ammar Agvan. All rights reserved. | Crafted with <span class="text-blue-500">❤️</span> and clean code.</p>
+    <footer class="border-t border-gray-200 dark:border-slate-800 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-950 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 mb-4">
+                        Ammar
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Frontend Developer crafting beautiful digital experiences with modern web technologies.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="projects.html" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Skills -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Skills</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="text-gray-600 dark:text-gray-400">HTML5 & CSS3</li>
+                        <li class="text-gray-600 dark:text-gray-400">JavaScript ES6+</li>
+                        <li class="text-gray-600 dark:text-gray-400">Responsive Design</li>
+                        <li class="text-gray-600 dark:text-gray-400">Tailwind CSS</li>
+                    </ul>
+                </div>
+                
+                <!-- Social -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Connect</h4>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Let's collaborate on your next project!
+                    </p>
+                    <a href="contact.html" class="inline-block px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm font-semibold">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Divider -->
+            <div class="border-t border-gray-200 dark:border-slate-700 pt-8">
+                <p class="text-center text-gray-600 dark:text-gray-400 text-sm">
+                    © 2024 Ammar Agvan. All rights reserved. | Crafted with <span class="text-blue-500">❤️</span> using HTML5, CSS3, and vanilla JavaScript.
+                </p>
+            </div>
         </div>
     </footer>
 

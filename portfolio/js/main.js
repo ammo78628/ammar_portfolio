@@ -1,56 +1,80 @@
-// Typing Animation for Skills
+// Reliable Typewriter Effect
 const createTypingAnimation = () => {
     const typingElement = document.getElementById('typingAnimation');
-    const skills = [
-        'HTML5 & CSS3',
-        'JavaScript (ES6+)',
-        'Responsive Design',
-        'Tailwind CSS',
-        'React.js',
-        'Problem Solving'
-    ];
-
+    
     if (!typingElement) return;
 
-    let skillIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const delayBetweenSkills = 2000;
+    const skills = [
+        'Web Enthusiast',
+        'React.js & Modern JavaScript',
+        'Responsive Web Design',
+        'Tailwind CSS Styling',
+        'HTML5 Semantic Markup',
+        'Interactive User Experiences',
+        'Web Performance Optimization',
+        'CSS3 Animations & Transitions',
+        'UI/UX Design',
+        'Frontend Developer',
+        'Problem Solving & Debugging',
+        'Full Stack Dev Basics'
+    ];
 
-    const type = () => {
-        const currentSkill = skills[skillIndex];
-        
-        if (isDeleting) {
-            charIndex--;
-        } else {
-            charIndex++;
+    let currentSkillIndex = 0;
+    let isTyping = true;
+    let currentText = '';
+    let timeoutId = null;
+
+    const clearTimeout$ = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
         }
-
-        typingElement.textContent = currentSkill.substring(0, charIndex);
-
-        let timeout = isDeleting ? deletingSpeed : typingSpeed;
-
-        if (!isDeleting && charIndex === currentSkill.length) {
-            // Finished typing, wait before deleting
-            timeout = delayBetweenSkills;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            // Finished deleting, move to next skill
-            isDeleting = false;
-            skillIndex = (skillIndex + 1) % skills.length;
-            timeout = 500;
-        }
-
-        setTimeout(type, timeout);
     };
 
-    // Start the animation
-    setTimeout(type, 500);
+    const typeCharacter = (skill, charIndex) => {
+        if (charIndex <= skill.length) {
+            currentText = skill.substring(0, charIndex);
+            typingElement.textContent = currentText;
+            charIndex++;
+
+            timeoutId = setTimeout(() => {
+                typeCharacter(skill, charIndex);
+            }, 60);
+        } else {
+            // Typing complete, wait then delete
+            timeoutId = setTimeout(() => {
+                deleteCharacter(skill, skill.length);
+            }, 2000);
+        }
+    };
+
+    const deleteCharacter = (skill, charIndex) => {
+        if (charIndex >= 0) {
+            currentText = skill.substring(0, charIndex);
+            typingElement.textContent = currentText;
+            charIndex--;
+
+            timeoutId = setTimeout(() => {
+                deleteCharacter(skill, charIndex);
+            }, 35);
+        } else {
+            // Deletion complete, move to next word
+            currentSkillIndex = (currentSkillIndex + 1) % skills.length;
+            timeoutId = setTimeout(() => {
+                typeCharacter(skills[currentSkillIndex], 0);
+            }, 300);
+        }
+    };
+
+    // Start typing first skill
+    typeCharacter(skills[0], 0);
 };
 
-window.addEventListener('DOMContentLoaded', createTypingAnimation);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createTypingAnimation);
+} else {
+    createTypingAnimation();
+}
 
 // Initialize all functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {

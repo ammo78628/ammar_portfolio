@@ -1,6 +1,10 @@
-/* Dark Mode Support */
+/* Dark navy/charcoal theme */
+html.dark {
+    color-scheme: dark;
+}
+
 html {
-    color-scheme: light dark;
+    color-scheme: light;
 }
 
 /* Smooth scrolling for navigation */
@@ -51,6 +55,189 @@ html {
     }
 }
 
+/* Water Bubble Effect */
+@keyframes bubbleGlow {
+    0%, 100% {
+        filter: drop-shadow(0 20px 40px rgba(59, 130, 246, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 25px 50px rgba(59, 130, 246, 0.5));
+    }
+}
+
+@keyframes bubbleWave {
+    0% {
+        border-radius: 45% 55% 52% 48% / 48% 55% 45% 52%;
+    }
+    25% {
+        border-radius: 55% 45% 48% 52% / 52% 48% 55% 45%;
+    }
+    50% {
+        border-radius: 48% 52% 55% 45% / 45% 52% 48% 55%;
+    }
+    75% {
+        border-radius: 52% 48% 45% 55% / 55% 45% 52% 48%;
+    }
+    100% {
+        border-radius: 45% 55% 52% 48% / 48% 55% 45% 52%;
+    }
+}
+
+@keyframes blob {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(20px, -50px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(50px, 50px) scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes orbiting {
+    0% {
+        transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(180px) rotate(-360deg);
+    }
+}
+
+@keyframes shine {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes glassGlow {
+    0%, 100% {
+        opacity: 0.3;
+        filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.3));
+    }
+    50% {
+        opacity: 0.6;
+        filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.6));
+    }
+}
+
+@keyframes typewriter-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+}
+
+@keyframes cursor-blink {
+    0%, 49%, 100% {
+        opacity: 1;
+    }
+    50%, 99% {
+        opacity: 0;
+    }
+}
+
+.bubble-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #334155 0%, #1e293b 50%, #0f172a 100%);
+    padding: 4px;
+    overflow: hidden;
+}
+
+.bubble-effect {
+    animation: bubbleGlow 3s ease-in-out infinite, bubbleWave 4s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(168, 85, 247, 0.3));
+}
+
+.float-animation {
+    animation: float 8s ease-in-out infinite;
+}
+
+.tech-orbit {
+    animation: orbiting 20s linear infinite;
+}
+
+.typewriter-glow {
+    animation: typewriter-glow 1.5s ease-in-out infinite;
+}
+
+.cursor-animated {
+    animation: cursor-blink 1s ease-in-out infinite;
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+.origin-center {
+    transform-origin: center;
+}
+
+/* Glass effect for modern look */
+.glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Neon glow shadows */
+.glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.glow-blue {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+}
+
+.glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.glow-pink {
+    box-shadow: 0 0 20px rgba(244, 114, 182, 0.5);
+}
+
 .animate-fade-in {
     animation: fadeIn 0.8s ease-out forwards;
 }
@@ -98,6 +285,8 @@ html {
 * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+
 
 /* Ensure images are responsive */
 img {
